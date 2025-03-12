@@ -1,6 +1,8 @@
 #ifndef BALLANIMATION_H
 #define BALLANIMATION_H
 
+#include "Helper.h"
+
 #include <QWidget>
 
 class BallAnimation : public QWidget
@@ -16,6 +18,7 @@ private:
     float mAngle{0};
     int mDistance{200};
     bool mPaused = false;
+    Helper helper;
 };
 
 #endif // BALLANIMATION_H

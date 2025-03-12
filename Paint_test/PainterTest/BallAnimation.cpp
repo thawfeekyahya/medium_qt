@@ -31,30 +31,34 @@ void BallAnimation::keyPressEvent(QKeyEvent *event)
 void BallAnimation::paintEvent(QPaintEvent *event)
 {
 
-    QColor color(255,0,0);
+   // QColor color(255,0,0);
 
-    QPainter painter(this);
+   // QPainter painter(this);
 
-    // painter.setWindow(0,0,20,20); // like zoom in or cropping the area only what you need
-    //painter.setViewport(width()/2,height()/2,640,480); // like scaling the enitre window
-    painter.setRenderHint(QPainter::Antialiasing);
+   // // painter.setWindow(0,0,20,20); // like zoom in or cropping the area only what you need
+   // //painter.setViewport(width()/2,height()/2,640,480); // like scaling the enitre window
+   // painter.setRenderHint(QPainter::Antialiasing);
 
-    painter.translate(width()/2,height()/2);
+   // painter.translate(width()/2,height()/2);
 
-    painter.setPen(Qt::NoPen);
-    painter.setBrush(color);
+   // painter.setPen(Qt::NoPen);
+   // painter.setBrush(color);
 
-    painter.save();
+   // painter.save();
 
-    if(!mPaused) {
-        //if(mAngle > 360) mAngle = 0.0;
-        mAngle+=0.1;
-    }
+   if(!mPaused) {
+   //     //if(mAngle > 360) mAngle = 0.0;
+       mAngle+=0.1;
+   }
 
-    float vx = qCos(mAngle) * mDistance;
-    float vy = qSin(mAngle) * mDistance;
+   float vx = qCos(mAngle) * mDistance;
+   float vy = qSin(mAngle) * mDistance;
 
-    painter.drawEllipse((-25+vx),(-25+vy),50,50);
-    //painter.drawRect(0,0,100,100);
-    painter.restore();
+   // painter.drawEllipse((-25+vx),(-25+vy),50,50);
+   // //painter.drawRect(0,0,100,100);
+   // painter.restore();
+
+   QPainter painter(this);
+   helper.paintBall(&painter,event,QPoint(width()/2,height()/2),QPoint(vx,vy));
+
 }
